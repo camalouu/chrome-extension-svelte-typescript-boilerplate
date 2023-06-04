@@ -5,7 +5,7 @@ const target = document.getElementById("app");
 
 function render() {
     storage.get().then(({ count }) => {
-        new Options({ target, props: { count } });
+        new Options({ target, /*props: { count }*/ });
     });
 }
 

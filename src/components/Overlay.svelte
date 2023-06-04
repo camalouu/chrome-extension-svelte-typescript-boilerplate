@@ -11,7 +11,8 @@
 </script>
 
 <div class="overlay">
-    <Options {count} />
+    <!-- <Options {count} /> -->
+    <Options />
 </div>
 
 <style>

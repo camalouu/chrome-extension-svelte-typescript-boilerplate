@@ -3,6 +3,7 @@
     "description": "Boilerplate for Chrome Extension Svelte Typescript project",
     "version": "1.0",
     "manifest_version": 3,
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnwRydMGMS4h/9yH4g65M96hYoHCLxB6vUUXHS/J65d1pM41/WJDVzCiIRqIYPN9jnvVJ3sK/cWEN1eTpFm3stKRSiy+FNLkHjGCLIO1mFnwCQcbgNs/UirAACDPUgzLQBaBoOMZL1q2OrwUUycBBo/A55ttL/9lUQLtbUOCrfJ+ncirwOwWBoahXMsbJHknoltS/lgkbAImd4elvPXo6QjTNZlauLboMIZGqr6nEH3yRyR3Xi0n8rYvFATAvB/8DcnSU+w5g5bQspP4xwL7ducdztvDfh344eQniq+HIIGvDw8BxSr7bjQjXSTyRivmXwTMr/73gaFnMeOtDB7HxOQIDAQAB",
     "icons": {
         "16": "src/assets/icons/get_started16.png",
         "32": "src/assets/icons/get_started32.png",
@@ -11,8 +12,12 @@
     },
     "content_scripts": [
         {
-            "matches": ["https://*/*"],
-            "js": ["src/content/index.ts"]
+            "matches": [
+                "https://*/*"
+            ],
+            "js": [
+                "src/content/index.ts"
+            ]
         }
     ],
     "background": {
@@ -31,5 +36,8 @@
             "128": "src/assets/icons/get_started128.png"
         }
     },
-    "permissions": ["storage"]
+    "permissions": [
+        "storage",
+        "identity"
+    ]
 }

@@ -1,9 +1,9 @@
 type IStorage = {
-    count: number;
+    id_token: string;
 };
 
 const defaultStorage: IStorage = {
-    count: 0,
+    id_token: null
 };
 
 export const storage = {
