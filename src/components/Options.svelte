@@ -37,6 +37,7 @@
 <style>
     .container {
         min-width: 250px;
+        font-size: large;
     }
 
     button {
