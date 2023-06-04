@@ -3,16 +3,16 @@
     import { storage } from "../storage";
 
     let successMessage: string;
-    let user_token_id = null;
+    let user_info = null;
 
     onMount(() => {
-        storage.get().then((strg) => (user_token_id = strg.id_token));
+        storage.get().then((strg) => (user_info = strg.user));
     });
 
     function login() {
         chrome.runtime.sendMessage({ message: "login" }, function (response) {
-            user_token_id = response;
-            storage.set({ id_token: response }).then((_) => {
+            user_info = response;
+            storage.set({ user: response }).then((_) => {
                 successMessage = "Successfully signed in";
                 setTimeout(() => {
                     successMessage = null;
@@ -22,17 +22,17 @@
     }
 
     function logout() {
-        storage.set({ id_token: null }).then((_) => {
-            user_token_id = null;
+        storage.set({ user: null }).then((_) => {
+            user_info = null;
         });
     }
 </script>
 
 <div class="container">
-    <p>Is signed in: <b>{!!user_token_id}</b></p>
-    <p>{user_token_id}</p>
+    <p>Is signed in: <b>{!!user_info}</b></p>
+    <p>{user_info}</p>
     <div>
-        {#if user_token_id}
+        {#if user_info}
             <button on:click={logout}>Log out</button>
         {:else}
             <button on:click={login}>Log in</button>
