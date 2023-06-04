@@ -2,22 +2,16 @@
     import { onMount } from "svelte";
     import { storage } from "../storage";
 
-    let successMessage: string;
     let user_info = null;
 
     onMount(() => {
-        storage.get().then((strg) => (user_info = strg.user));
+        storage.get().then(({ user }) => (user_info = user));
     });
 
     function login() {
         chrome.runtime.sendMessage({ message: "login" }, function (response) {
             user_info = response;
-            storage.set({ user: response }).then((_) => {
-                successMessage = "Successfully signed in";
-                setTimeout(() => {
-                    successMessage = null;
-                }, 2500);
-            });
+            storage.set({ user: response });
         });
     }
 
@@ -30,14 +24,13 @@
 
 <div class="container">
     <p>Is signed in: <b>{!!user_info}</b></p>
-    <p>{user_info}</p>
+    <p id="usr-info">{user_info}</p>
     <div>
         {#if user_info}
             <button on:click={logout}>Log out</button>
         {:else}
             <button on:click={login}>Log in</button>
         {/if}
-        {#if successMessage}<span class="success">{successMessage}</span>{/if}
     </div>
 </div>
 
@@ -61,7 +54,7 @@
         background-color: #27ae60;
     }
 
-    .success {
+    #usr-info {
         color: #2ecc71;
         font-weight: bold;
     }
