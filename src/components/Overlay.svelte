@@ -6,7 +6,6 @@
 </script>
 
 <div class="overlay">
-    <!-- <Options {count} /> -->
     <Options />
 </div>
 

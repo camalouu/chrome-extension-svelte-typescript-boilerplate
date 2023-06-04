@@ -3,7 +3,6 @@
     import { storage } from "../storage";
     import Button, { Label } from "@smui/button";
     import ResponseInfo from "./ResponseInfo.svelte";
-    import { Image, ImageAspectContainer } from "@smui/image-list";
 
     let user_info = null;
 
